@@ -1,0 +1,1 @@
+# Prueba de concepto de uso de gRPC y Golang para manejo de notificaciones
