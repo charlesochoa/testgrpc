@@ -19,3 +19,16 @@ message Item {
     ItemPriority priority = 3;
     ItemStatus status = 4;
 }
+
+message SendItemReq {
+    Item item = 1;
+}
+
+message SendItemResp {
+    string id = 1;
+}
+
+service NotificationService {
+    rpc Send (SendItemReq) returns (SendItemResp);
+}
+
