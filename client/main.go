@@ -30,3 +30,5 @@ func main() {
 	}
 	fmt.Println(res.Id)
 }
+
+// projects/project-prometeo-v2/topics/test-grpc-pub-sub
