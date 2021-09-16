@@ -30,5 +30,6 @@ message SendItemResp {
 
 service NotificationService {
     rpc Send (SendItemReq) returns (SendItemResp);
+    rpc SendAgain (SendItemReq) returns (SendItemResp);
 }
 
