@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package notification;
+
+option go_package = "github.com/charlesochoa/testgrpc/notification";
+
+message Item {
+    enum ItemPriority {
+        LOW = 0;
+        MID = 50;
+        HIGH = 100;
+    }
+    enum ItemStatus {
+        INACTIVE = 0;
+        ACTIVE = 1;
+    }
+    string id = 1;
+    string content = 2;
+    ItemPriority priority = 3;
+    ItemStatus status = 4;
+}
