@@ -2,7 +2,7 @@ syntax="proto3";
 
 package notification;
 
-option go_package = "github.com/charlesochoa/testgrpc/notification";
+option go_package = "notification;testgrpc";
 
 message Item {
     enum ItemPriority {
@@ -20,6 +20,12 @@ message Item {
     ItemStatus status = 4;
 }
 
+message Click {
+    string media_id = 2;
+    string gadget_id = 3;
+    string user_id = 4;
+}
+
 message SendItemReq {
     Item item = 1;
 }
@@ -28,8 +34,17 @@ message SendItemResp {
     string id = 1;
 }
 
+message ClickReq {
+    Click click = 1;
+}
+
+message ClickResp {
+    string id = 1;
+}
+
 service NotificationService {
     rpc Send (SendItemReq) returns (SendItemResp);
     rpc SendAgain (SendItemReq) returns (SendItemResp);
+    rpc Click (ClickReq) returns (ClickResp);
 }
 

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package echo;
+option go_package = "github.com/charlesochoa/testgrpc/echo";
+
+message TextRequest {
+ string request = 1;
+}
+
+message TextResponse {
+ string response = 1;
+}
+
+service Echo {
+rpc DirectEcho (TextRequest) returns (TextResponse) {}
+rpc InvertedEcho (TextRequest) returns (TextResponse) {}
+rpc SpellEcho (TextRequest) returns (stream TextResponse) {}
+}

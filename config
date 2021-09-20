@@ -1,0 +1,12 @@
+PROJECT=project-prometeo-v2
+REGION=europe-north1-a
+ROOT=root
+INSTANCE=${PROJECT}:${REGION}:${ROOT}
+DBNAME=test_click_impressions
+DBUSER=root
+DBPASS=root
+
+https://console.cloud.google.com/apis/api/sqladmin.googleapis.com/overview?project=project-prometeo-v2&duration=PT1H
+
+
+https://console.cloud.google.com/sql/instances/project-prometeo-v2:europe-north1-a:root-m/databases?project=project-prometeo-v2
