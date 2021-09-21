@@ -1,4 +1,14 @@
 
+CREATE TABLE IF NOT EXISTS user (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+)  ENGINE=INNODB;
+
+insert  into `user`(`name`) values 
+
+    ('Charles Ochoa'),
+    ('Julia Pacheco');
+
 CREATE TABLE IF NOT EXISTS test_media (
     test_media_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
