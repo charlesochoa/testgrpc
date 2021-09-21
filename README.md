@@ -15,4 +15,4 @@ pack build --builder gcr.io/buildpacks/builder:v1
 docker run --rm -p 8080:8080 client
 
 ## Testing cloud run access
-grpcurl -proto grpc-protos/echo.proto -d '{"request": "Request Content"}' test-grpc-malvira-wibdbssi3q-ew.a.run.app:8080 echo.DirectEcho
+grpcurl -proto notification/echo.proto -d '{"Id": "2457845", "Content": "Mensaje desde consola}' https://grpc-server-wibdbssi3q-ew.a.run.app:8080 notification.Send
