@@ -18,13 +18,8 @@ type server struct {
 var requests = 0
 
 const (
-	projectID          = "project-prometeo-v2"
-	topicID            = "test-grpc-pub-sub"
-	instanceConnection = "project-prometeo-v2:europe-north1:grpc-test"
-	databaseName       = "test_click_impressions"
-	user               = "root"
-	password           = "root"
-	createSchema       = "USE test_click_impressions; CREATE TABLE click (track_host VARCHAR(255), media_id VARCHAR(255), clickID INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(clickID));"
+	projectID = "project-prometeo-v2"
+	topicID   = "test-grpc-pub-sub"
 )
 
 func (s *server) Send(ctx context.Context, req *pb.SendItemReq) (*pb.SendItemResp, error) {
@@ -66,26 +61,6 @@ func publish(msg string) error {
 }
 
 func main() {
-
-	// cfg := mysql.Cfg(instanceConnection, "root", "root")
-	// cfg.DBName = databaseName
-	// db, err := mysql.DialCfg(cfg)
-	// if err != nil {
-	// 	panic("Cannot connect to db >>" + err.Error())
-	// }
-	// fmt.Println(db)
-	// _, err = db.Exec(createSchema)
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/")
-	// if err != nil {
-	// 	fmt.Println(err.Error())
-	// } else {
-	// 	fmt.Println("Database connected successfully")
-	// 	fmt.Println(db)
-	// }
 
 	lstnr, err := net.Listen("tcp", ":50051")
 	if err != nil {

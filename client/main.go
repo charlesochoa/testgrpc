@@ -134,7 +134,7 @@ func main() {
 	projectID := "project-prometeo-v2"
 	subscriptionID := "test-grpc-subscription"
 	go pubSubReceiver(projectID, subscriptionID)
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+	conn, err := grpc.Dial("testgrpc-web-wibdbssi3q-ew.a.run.app:50051", grpc.WithInsecure())
 
 	if err != nil {
 		panic("cannot connect with server " + err.Error())

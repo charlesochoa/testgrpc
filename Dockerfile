@@ -16,7 +16,7 @@ RUN go mod download
 COPY ./client/ ./
 
 # Copy local code to the container image.
-COPY ./../notification/ ./notification
+COPY ./notification/ ./notification
 
 # Build the binary.
 RUN go build -mod=readonly -v -o client
