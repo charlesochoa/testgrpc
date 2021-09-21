@@ -11,6 +11,7 @@ import (
 
 	"cloud.google.com/go/pubsub"
 	"google.golang.org/grpc"
+	"tawesoft.co.uk/go/dialog"
 )
 
 type RadioButton struct {
@@ -32,20 +33,21 @@ var serviceClient pb.NotificationServiceClient
 
 func DisplayRadioButtons(w http.ResponseWriter, r *http.Request) {
 	// Display some radio buttons to the user
-
-	Title := "Which do you prefer?"
+	fmt.Println("Display")
+	Title := "Cual Prefieres?"
 	MyRadioButtons := []RadioButton{
-		{"animalselect", "cats", false, false, "Cats"},
-		{"animalselect", "dogs", false, false, "Dogs"},
+		{"animalselect", "perros", false, false, "Perros"},
+		{"animalselect", "gatos", false, false, "Gatos"},
 	}
 
 	MyPageVariables := PageVariables{
 		PageTitle:        Title,
 		PageRadioButtons: MyRadioButtons,
+		Answer:           "",
 	}
 
-	t, err := template.ParseFiles("page.html") //parse the html file homepage.html
-	if err != nil {                            // if there is an error
+	t, err := template.ParseFiles("../views/page.html") //parse the html file homepage.html
+	if err != nil {                                     // if there is an error
 		log.Print("template parsing error: ", err) // log it
 	}
 
@@ -63,16 +65,22 @@ func UserSelected(w http.ResponseWriter, r *http.Request) {
 	// map[animalselect:[dogs]]
 	// so get the animal which has been selected
 	youranimal := r.Form.Get("animalselect")
-	SendAnswer("Preference: " + youranimal)
-	Title := "Your preferred animal"
+	MyRadioButtons := []RadioButton{
+		{"animalselect", "perros", false, false, "Perros"},
+		{"animalselect", "gatos", false, false, "Gatos"},
+	}
+
+	SendAnswer("Preferencia: " + youranimal)
+	Title := "Has elegido: "
 	MyPageVariables := PageVariables{
-		PageTitle: Title,
-		Answer:    youranimal,
+		PageTitle:        Title,
+		PageRadioButtons: MyRadioButtons,
+		Answer:           youranimal,
 	}
 
 	// generate page by passing page variables into template
-	t, err := template.ParseFiles("page.html") //parse the html file homepage.html
-	if err != nil {                            // if there is an error
+	t, err := template.ParseFiles("../views/page.html") //parse the html file homepage.html
+	if err != nil {                                     // if there is an error
 		log.Print("template parsing error: ", err) // log it
 	}
 
@@ -97,6 +105,7 @@ func pubSubReceiver(projectID string, subscriptionID string) {
 		s := string(m.Data)
 		fmt.Println("m.ID >>", m.ID, "m.content >>", s)
 
+		dialog.Alert("Message from PubSub:\nm.ID >>" + m.ID + "\nm.content >>" + s)
 		// TODO: Handle message.
 		// NOTE: May be called concurrently; synchronize access to shared memory.
 		m.Ack()

@@ -11,7 +11,6 @@ require (
 
 require (
 	cloud.google.com/go v0.94.1 // indirect
-	github.com/GoogleCloudPlatform/cloudsql-proxy v1.25.0
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/googleapis/gax-go/v2 v2.1.0 // indirect
@@ -26,14 +25,6 @@ require (
 )
 
 require (
-	github.com/go-sql-driver/mysql v1.6.0 // indirect
-	go.uber.org/atomic v1.7.0 // indirect
-	go.uber.org/multierr v1.6.0 // indirect
-	go.uber.org/zap v1.19.0 // indirect
-	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect
-)
-
-require (
-	github.com/pkg/errors v0.9.1 // indirect
 	google.golang.org/api v0.56.0 // indirect
+	tawesoft.co.uk/go/dialog v0.0.0-20201103210221-4175697d086f
 )

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
@@ -15,18 +15,18 @@
 </script>
 <body>
   {{with $1:=.PageRadioButtons}}
-  <p> Which do you prefer</p>
+  <p> Que prefieres</p>
 
     <form action="/selected" method="post">
          {{range $1}}
            <input type="radio" name={{.Name}} value={{.Value}} {{if .IsDisabled}} disabled=true {{end}} {{if .IsChecked}}checked{{end}}> {{.Text}}
          {{end}}
-         <button click="/selected">ejemplo</button>
     </form>
+    <br>
   {{end}}
 
   {{with $2:=.Answer}}
-    <p>Your answer is {{$2}}</p>
+    <p>Has preferido {{$2}}</p>
   {{end}}
 
 </body>

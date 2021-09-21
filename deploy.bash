@@ -1,0 +1,2 @@
+gcloud builds submit --tag gcr.io/project-prometeo-v2/clientgrpc --project project-prometeo-v2 &&
+gcloud run deploy clientgrpc-web --image gcr.io/project-prometeo-v2/clientgrpc:latest --project project-prometeo-v2 --platform managed
